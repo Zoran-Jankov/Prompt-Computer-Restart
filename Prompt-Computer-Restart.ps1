@@ -53,8 +53,11 @@ $PostponeButton.Add_Click( {
     })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 while ($TimeTriger) {
 =======
+=======
+>>>>>>> parent of ee9063a (Update Prompt-Computer-Restart.ps1)
 if ($TimeTriger) {
     Add-Type -AssemblyName System.Windows.Forms
     [System.Windows.Forms.Application]::EnableVisualStyles()
@@ -95,6 +98,9 @@ if ($TimeTriger) {
         $PromptComputerRestartForm.Close()
     })
 
+<<<<<<< HEAD
+>>>>>>> parent of ee9063a (Update Prompt-Computer-Restart.ps1)
+=======
 >>>>>>> parent of ee9063a (Update Prompt-Computer-Restart.ps1)
     [void]$PromptComputerRestartForm.ShowDialog()
 }
