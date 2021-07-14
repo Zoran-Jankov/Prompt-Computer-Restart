@@ -14,41 +14,41 @@ if ($TimeTriger) {
     Add-Type -AssemblyName System.Windows.Forms
     [System.Windows.Forms.Application]::EnableVisualStyles()
 
-    $PromptComputerRestartForm             = New-Object system.Windows.Forms.Form
-    $PromptComputerRestartForm.ClientSize  = New-Object System.Drawing.Point(800,350)
-    $PromptComputerRestartForm.text        = $WindowTitle
-    $PromptComputerRestartForm.TopMost     = $true
+    $PromptComputerRestartForm = New-Object system.Windows.Forms.Form
+    $PromptComputerRestartForm.ClientSize = New-Object System.Drawing.Point(800, 350)
+    $PromptComputerRestartForm.text = $WindowTitle
+    $PromptComputerRestartForm.TopMost = $true
 
-    $MessageField                    = New-Object system.Windows.Forms.Label
-    $MessageField.text               = $Message
-    $MessageField.AutoSize           = $true
-    $MessageField.width              = 500
-    $MessageField.height             = 300
-    $MessageField.location           = New-Object System.Drawing.Point(50,50)
-    $MessageField.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
+    $MessageField = New-Object system.Windows.Forms.Label
+    $MessageField.text = $Message
+    $MessageField.AutoSize = $true
+    $MessageField.width = 500
+    $MessageField.height = 300
+    $MessageField.location = New-Object System.Drawing.Point(50, 50)
+    $MessageField.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
 
-    $RestartButton                   = New-Object system.Windows.Forms.Button
-    $RestartButton.text              = $RestartButtonName
-    $RestartButton.width             = 160
-    $RestartButton.height            = 50
-    $RestartButton.location          = New-Object System.Drawing.Point(210,170)
-    $RestartButton.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
+    $RestartButton = New-Object system.Windows.Forms.Button
+    $RestartButton.text = $RestartButtonName
+    $RestartButton.width = 160
+    $RestartButton.height = 50
+    $RestartButton.location = New-Object System.Drawing.Point(210, 170)
+    $RestartButton.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
 
-    $PostponeButton                  = New-Object system.Windows.Forms.Button
-    $PostponeButton.text             = $PostponeButtonName
-    $PostponeButton.width            = 160
-    $PostponeButton.height           = 50
-    $PostponeButton.location         = New-Object System.Drawing.Point(450,170)
-    $PostponeButton.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
+    $PostponeButton = New-Object system.Windows.Forms.Button
+    $PostponeButton.text = $PostponeButtonName
+    $PostponeButton.width = 160
+    $PostponeButton.height = 50
+    $PostponeButton.location = New-Object System.Drawing.Point(450, 170)
+    $PostponeButton.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
 
-    $PromptComputerRestartForm.controls.AddRange(@($MessageField,$RestartButton,$PostponeButton))
+    $PromptComputerRestartForm.controls.AddRange(@($MessageField, $RestartButton, $PostponeButton))
 
-    $RestartButton.Add_Click({
-        Restart-Computer -Force
-    })
-    $PostponeButton.Add_Click({
-        $PromptComputerRestartForm.Close()
-    })
+    $RestartButton.Add_Click( {
+            Restart-Computer -Force
+        })
+    $PostponeButton.Add_Click( {
+            $PromptComputerRestartForm.Close()
+        })
 
     Start-Job -ScriptBlock {
         Start-Sleep -Seconds 2520
