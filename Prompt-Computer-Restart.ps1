@@ -1,5 +1,5 @@
-$CIMObject = Get-CimInstance win32_operatingsystem
-$LastBootTime = $CIMObject.LastBootUpTime
+$CimObject = Get-CimInstance win32_operatingsystem
+$LastBootTime = $CimObject.LastBootUpTime
 $TimeTriger = $LastBootTime -lt (Get-Date).AddDays(-7)
 
 if ($TimeTriger) {
