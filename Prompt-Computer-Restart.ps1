@@ -1,6 +1,6 @@
 $WmiObject = Get-CimInstance win32_operatingsystem
 $LastBootTime = $WmiObject.LastBootUpTime
-$TimeTriger = $LastBootTime -lt (Get-Date).AddDays(-0)
+$TimeTriger = $LastBootTime -lt (Get-Date).AddDays(-7)
 
 if ($TimeTriger) {
     $WindowTitle = "Obaveštenje za restart računara"
