@@ -1,12 +1,12 @@
 $WmiObject = Get-WmiObject win32_operatingsystem
 $LastBootTime = [Management.ManagementDateTimeConverter]::ToDateTime($WmiObject.LastBootUpTime)
-$TimeTriger = $LastBootTime -lt (Get-Date).AddDays(-0)
+$TimeTriger = $LastBootTime -lt (Get-Date).AddDays(-7)
 
 if ($TimeTriger) {
     $WindowTitle = "Obaveštenje za restart računara"
     $Message = "Poštovani, Vaš računar nije restartovan više od nedelju dana.`r`n
     Molim Vas da restartujete računar kako ne bi došlo do problema u radu Vašeg računara.`r`n
-    Ukoliko sami ne restartujete računar on će se sam restartovati za .`r`n`r`n
+    Ukoliko sami ne restartujete računar on će se sam restartovati u roku od sedam sati.`r`n`r`n
     IT sektor, Univerexport doo"
     $RestartButtonName = "Restartuj odmah"
     $PostponeButtonName = "Odloži"
