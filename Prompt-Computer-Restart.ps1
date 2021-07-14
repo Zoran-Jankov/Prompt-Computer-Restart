@@ -1,6 +1,6 @@
-$WmiObject = Get-WmiObject win32_operatingsystem
-$LastBootTime = [Management.ManagementDateTimeConverter]::ToDateTime($WmiObject.LastBootUpTime)
-$TimeTriger = $LastBootTime -lt (Get-Date).AddDays(-7)
+$WmiObject = Get-CimInstance win32_operatingsystem
+$LastBootTime = $WmiObject.LastBootUpTime
+$TimeTriger = $LastBootTime -lt (Get-Date).AddDays(-0)
 
 if ($TimeTriger) {
     $WindowTitle = "Obaveštenje za restart računara"
@@ -15,7 +15,7 @@ if ($TimeTriger) {
     [System.Windows.Forms.Application]::EnableVisualStyles()
 
     $PromptComputerRestartForm             = New-Object system.Windows.Forms.Form
-    $PromptComputerRestartForm.ClientSize  = New-Object System.Drawing.Point(800,250)
+    $PromptComputerRestartForm.ClientSize  = New-Object System.Drawing.Point(800,350)
     $PromptComputerRestartForm.text        = $WindowTitle
     $PromptComputerRestartForm.TopMost     = $true
 
@@ -51,7 +51,7 @@ if ($TimeTriger) {
     })
 
     Start-Job -ScriptBlock {
-        Start-Sleep -Seconds 10
+        Start-Sleep -Seconds 2520
         Restart-Computer -Force
     }
 
