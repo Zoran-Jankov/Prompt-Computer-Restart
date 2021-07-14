@@ -33,6 +33,9 @@ if ($TimeTriger) {
     $RestartButton.height = 50
     $RestartButton.location = New-Object System.Drawing.Point(210, 170)
     $RestartButton.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
+    $RestartButton.Add_Click( {
+        Restart-Computer -Force
+    })
 
     $PostponeButton = New-Object system.Windows.Forms.Button
     $PostponeButton.text = $PostponeButtonName
@@ -40,15 +43,11 @@ if ($TimeTriger) {
     $PostponeButton.height = 50
     $PostponeButton.location = New-Object System.Drawing.Point(450, 170)
     $PostponeButton.Font = New-Object System.Drawing.Font('Microsoft Sans Serif', 10)
+    $PostponeButton.Add_Click( {
+        $PromptComputerRestartForm.Close()
+    })
 
     $PromptComputerRestartForm.controls.AddRange(@($MessageField, $RestartButton, $PostponeButton))
-
-    $RestartButton.Add_Click( {
-            Restart-Computer -Force
-        })
-    $PostponeButton.Add_Click( {
-            $PromptComputerRestartForm.Close()
-        })
 
     Start-Job -ScriptBlock {
         Start-Sleep -Seconds 2520
