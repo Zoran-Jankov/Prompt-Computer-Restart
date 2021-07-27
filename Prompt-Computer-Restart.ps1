@@ -1,6 +1,6 @@
 $CimObject = Get-CimInstance win32_operatingsystem
 $LastBootTime = $CimObject.LastBootUpTime
-$TimeTriger = $LastBootTime -lt (Get-Date).AddDays(-7)
+$TimeTriger = $LastBootTime -lt (Get-Date).AddDays(-0)
 
 if ($TimeTriger) {
     $WindowTitle = "Obaveštenje za restart računara"
@@ -10,7 +10,7 @@ if ($TimeTriger) {
 
     $Margin = 30
     $WindowHeight = 400
-    $WindowWidth = 610
+    $WindowWidth = 620
     $ButtonWith = 200
     $ButtonHeight = 50
     
